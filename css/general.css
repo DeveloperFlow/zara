@@ -1,0 +1,93 @@
+body{margin:0; padding:0;}
+button{background-color: transparent; border:1px solid #f00; outline:none; color:#f00 !important;
+font-weight: bold;}
+
+/*more general styles*/
+.text-icon{font-size:40px; display:none}
+
+/*menu*/
+.menu{background-color: #75c2af; padding:1%; width:10%; max-width: 120px; z-index:3}
+.menu *{text-align: center; width:100%; color:#fff; display: block;
+text-decoration: none;}
+.menu .space-up{margin-top:40%}
+.menu .menu-item img{display:block; margin:auto}
+#menu-ini{background-color: #75c2af;}
+/* the current section will be indicated by the menu*/
+.menu-item.current{border-right: 2px solid #fff; padding-left:2%}
+
+#main-tab{width:90%; background-image:url("../img/bg.png"); background-size: cover;
+margin-left:10%; background-position:top}
+#main-tab *{color:#444; -webkit-text-stroke:#fff 1px;}
+
+#intro{padding:2%; min-height:100vh}
+#intro .icon{width:20%}
+#intro .name{font-size: 40px; font-weight: bold; padding:2%;}
+#intro .name .n{color:#75c2af}
+#intro .occupation{font-size:25px; font-weight:bold; text-align: left;}
+#intro .occupation div{color:#75c2af;}
+#intro .contact-me *{font-size:18px; font-weight: normal; -webkit-text-stroke: 0px;}
+
+.content{width:50%; margin:auto}
+#skills{padding: 3%;}
+#skills .intro{margin-top:3%}
+#skills *,#projects *{-webkit-text-stroke:0px}
+#skills-list{padding:0% 5% 4% 5%;}
+#skills-list img{width:40%; height:auto}
+#skills-list .skill{width:auto; max-width:250px; text-align: center; margin-top:5%; 
+    margin-left:5%; padding:5%; border-radius:25px; border:2px solid #75c2af;
+    float:left; height:200px}
+
+#projects{padding:3%}
+#project-list{padding: 0% 5% 4% 5%;}
+#project-list img{width:100%; height:auto; max-height:60%; object-fit: cover;}
+#project-list .project span{font-weight: normal;}
+#project-list .project{width:auto; max-width:250px; text-align: center; margin-top: 5%;
+    margin-left:5%; padding:5%; border-radius:25px; border:2px solid #75c2af; float:left;
+    height:200px;
+}
+.project-details .skills{border-radius: 25px; font-size:13px; background-color: #aaa;
+    display:inline-block; margin-top:2%; margin-left:2%
+}
+.project-details .slider-container{margin-top:5%}
+.project-details .slider-container *{color:#000 !important}
+.project-details .header{border-bottom:2px solid #75c2af}
+.project-details .desc{background-color: rgba(100,100,100,0.5); padding:2%; border-radius: 8px;}
+
+#theme-set .toggle-container{margin-top:4%}
+.toggle-container input[type=checkbox]:checked + span.round{
+    background-color: #75c2af; transform:translate(20px,0)
+}
+.bigscreen-minitab{position:absolute; right:0; height:100%; max-height: none; border-radius: 0px;}
+.minitab .cancel-btn{border:0px}
+.minitab{background-image: url("../img/p.png"); background-size: cover; background-position: top;}
+.scroll-n-view.visible.from-left{animation-name:from-left; animation-duration: .5s;}
+.scroll-n-view{transition: .5s;}
+
+/*small screens*/
+body.ss #main-tab{width:100%; margin-left: 0%;}
+body.ss #intro .name{font-size:30px}
+body.ss #menu-ini{display:flex}
+body.ss .menu{width:100%; max-width:200px;}
+body.ss .hide{display:none}
+body.ss .menu .space-up{margin-top:20%}
+body.ss .toggle-container input[type=checkbox]:checked + span.round{
+    background-color:#f00;
+}
+body.ss .content{width:100%; padding:5%}
+body.ss #skills-list .skill{width:45%}
+body.ss #project-list .project{width:45%}
+
+/*dark theme*/
+#dark-theme *{color:#fff}
+#dark-theme body{background-color: #000;}
+#dark-theme .menu{background-color:#000; border-right:2px solid #f00}
+#dark-theme .menu-item.current{border-right:2px solid #75c2af}
+#dark-theme #skills-list .skill{box-shadow:inset 2px 10px 10px #555;}
+#dark-theme #project-list .project{box-shadow:inset 2px 10px 10px #888}
+#dark-theme .minitab{background-color: #000;}
+
+
+@keyframes from-left{
+    0%{translate:-200px}
+    100%{translate:0px}
+}

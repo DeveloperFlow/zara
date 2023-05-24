@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hello, I am Ebube">
+    <link rel="stylesheet" href="/lib/css/literal.css">
+    <link rel="stylesheet" href="/lib/css/ui.css">
+    <link rel="stylesheet" href="css/general.css">
+    <script defer src="js/skills.js"></script>
+    <script defer src="projects/projects.js"></script>
+    <script defer src="/lib/js/basics.js"></script>
+    <script defer src="/lib/js/ui.js"></script>
+    <script defer src="js/general.js"></script>
+    <title>Meet Zara</title>
+    <style>
+        .none{display:none}
+        .not-loaded #menu{display:none}
+        .not-loaded #main-tab{display:none}
+        /*welcome page*/
+        #welcome-node #animation-container{margin:auto; text-align: center;}
+        #welcome-node span{color:#000; font-size: 35px; font-weight: bold;}
+        #welcome-node .name{color:#75c2af}
+        #welcome-node .box{margin:auto}
+        #welcome-node .box button{width:20px; height:20px; background-color: #75c2af; border:none;
+        outline:none; position: relative;}
+        #welcome-node .box button.r{animation-name:r; animation-duration: 2s;
+        animation-iteration-count: infinite;}
+        #welcome-node .box button.l{animation-name:l; animation-duration: 2s; 
+        animation-iteration-count: infinite; background-color: #000;}
+        
+        @keyframes r{
+            0%{right:0px}
+            50%{right:25px}
+            100%{right:0px}
+        }
+        @keyframes l{
+            0%{left:0px}
+            50%{left: 20px;}
+            100%{left:0px}
+        }
+        @media only screen and (max-width:320px){
+            #welcome-node span{font-size: 20px;}
+        }
+    </style>
+</head>
+<body class="my-fonts hfull not-loaded">
+    <div style="position:fixed; width:100%; height:100%; background-color: #fff;" id="welcome-node">
+        <div id="animation-container">
+            <span class="name">Zara</span><span>'s Portfolio</span>
+            <div class="box">
+                <button class="round l"></button>
+                <button class="round r"></button>
+            </div>
+        </div>
+    </div>
+    <div id="menu" class="menu absolute fixed left full-height scrollable-v hide">
+        <div>
+            <a class="menu-item pointer zoom current block" href="#intro">
+                <img class="icon mid" src="img/me.png">
+                <div>Me</div>
+            </a>
+            <a class="menu-item pointer space-up zoom" href="#skills">
+                <img class="icon mid"  src="img/skills.png">
+                <div>My Skills</div>
+            </a>
+            <a class="menu-item pointer space-up zoom" href="#projects">
+                <img class="icon mid" src="img/projects.png">
+                <div>My Projects</div>
+            </a>
+        </div>
+    </div>
+    <div id="menu-ini" class="fixed top left text-icon apart vcenter full-width">
+        <span id="ini" class="pointer">&#8801;</span>
+    </div>
+    <div id="main-tab" class="full-height hfull scrollable-v">
+        <div id="theme-set" class="minor-pad fixed right top">
+            <span id="theme-indi" class="black bold">Light Theme</span>
+            <span class="toggle-container" id="theme-toggle">
+                <input type="checkbox" id="theme-ini">
+                <span class="round"></span>
+            </span>
+        </div>
+        <div id="intro" class="full-height flex column vcenter hcenter">
+            <div class="name">
+                <div><img class="icon mid" src="img/dev.png"></div>
+                <span style="border-bottom:2px solid #75c2af; color:#f00">Hello,</span> 
+                <div>My Name is <span class="n">C</span>higoziem <span class="n">C</span>hizaram</div>
+                <div class="occupation space-up">
+                    <span>And I am a Full-Stack Web Developer</span>
+                    <div class="space-up">I love to combine functionality and design for great User experiences</div>
+                </div>
+                <div class="space-up contact-me">
+                    <div>I can be reached through all of the following platforms</div>
+                    <div class="contact-methods" id="contact-methods">
+                        <img class="icon mid pointer" src="img/email.png" name="email">
+                        <img class="icon mid pointer space-left" src="img/whatsapp.png" name="wa">
+                        <img class="icon mid pointer space-left" src="img/phone.png" name="phone">
+                        <img class="icon mid pointer space-left" src="img/upwork.png" name="uw">
+                    </div>
+                </div>
+                <div><img class="icon mid" src="img/dev.png"></div>
+            </div>
+        </div>
+        <div id="skills" class="scroll-n-view">
+            <h1 class="auto-margin center-text">My skills and Deliverables</h1>
+            <div class="content scroll-n-view">
+                <div class="intro">
+                    I am a Full-Stack Web Developer and in a nut shell it means that I am
+                    capable of handling both Front and Back end parts of a web site development
+                    project.
+                    <div class="margin-top scroll-n-view">
+                        Web Development is very broad, but here are the parts of it where I 
+                        shine brightest
+                    </div>
+                </div>
+            </div>
+            <div class="skills" id="skills-list">
+            </div>
+        </div>
+        <div id="projects" class="space-up scroll-n-view">
+            <div class="content">
+                <h1 class="center-text">Projects</h1>
+                <div class="intro scroll-n-view">
+                    I Love to work on a wide range of web application categories and it helps me
+                    improve both My skill and my experience as a Web Developer.
+                    Here You can See some of the projects that I have worked on in the past
+                </div>
+            </div>
+            <div id="project-list">
+            </div>
+        </div>
+        <footer class="minor-pad center-text">
+            <h2>Contact Me</h2>
+        </footer>
+    </div>
+    <script>
+        /*this script is for the animation that plays before the page loads*/
+        var loadStart
+        var WelcomeContainer = document.getElementById("welcome-node")
+        var AnimationBox = WelcomeContainer.children[0]
+        var menu =  document.getElementById("menu")
+        var mainTab = document.getElementById("main-tab")
+        var menuIni = document.getElementById("menu-ini")
+        var menuIniBtn = document.getElementById("ini")
+        var themeIni = document.getElementById("theme-ini")
+        var themeIndicator = document.getElementById("theme-indi")
+        var themeSet = document.getElementById("theme-set")
+        var themeToggle = document.getElementById("theme-toggle")
+        var skillsList = document.getElementById("skills-list")
+        var projectsList = document.getElementById("project-list")
+        var contactList = document.getElementById("contact-methods")
+        var a = function(){
+            function adjust(){
+                var nodeH = AnimationBox.clientHeight
+                var containerH = WelcomeContainer.clientHeight
+                AnimationBox.style.marginTop = ((containerH - nodeH) / 2).toString() + "px"
+            }
+            adjust()
+            loadStart = Number(new Date())
+            window.onresize = adjust
+        }()
+    </script>
+</body>
+</html>
