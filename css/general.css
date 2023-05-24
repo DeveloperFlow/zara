@@ -62,6 +62,7 @@ margin-left:10%; background-position:top}
 .minitab{background-image: url("../img/p.png"); background-size: cover; background-position: top;}
 .scroll-n-view.visible.from-left{animation-name:from-left; animation-duration: .5s;}
 .scroll-n-view{transition: .5s;}
+.contact-methods{margin-top:3%}
 
 /*small screens*/
 body.ss #main-tab{width:100%; margin-left: 0%;}

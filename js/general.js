@@ -58,7 +58,9 @@ function adjust(){
     if(winDim.w < 700){
         /*small screen*/
         changeClass(document.body,"bs","ss")
-        mainTab.style.marginTop = elementDim(menuIni,"h").toString() + "px"
+        var menuIniH = elementDim(menuIni,"h")
+        mainTab.style.marginTop = menuIniH.toString() + "px"
+        if(menuIniH < winDim.h){IntroPage.style.minHeight = (winDim.h - menuIniH).toString() + "px"}
         menuIni.appendChild(themeToggle)
         remove(themeSet)
     }
@@ -66,6 +68,7 @@ function adjust(){
         changeClass(document.body,"ss","bs")
         mainTab.style.marginTop = ""
         menu.style.height = ""
+        IntroPage.style.minHeight = ""
         themeSet.appendChild(themeToggle)
         mainTab.appendChild(themeSet)
     }
