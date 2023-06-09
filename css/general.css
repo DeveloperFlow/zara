@@ -1,31 +1,35 @@
-body{margin:0; padding:0;}
+body{margin:0; padding:0; background-color: #e8e8ff; background-image: url("../img/bg.png");
+background-position:top; background-size:contain;}
 button{background-color: transparent; border:1px solid #f00; outline:none; color:#f00 !important;
 font-weight: bold;}
 
 /*more general styles*/
 .text-icon{font-size:40px; display:none}
+img{border:none}
 
 /*menu*/
-.menu{background-color: #75c2af; padding:1%; width:10%; max-width: 120px; z-index:3}
-.menu *{text-align: center; width:100%; color:#fff; display: block;
-text-decoration: none;}
+.menu{background-color: #e8e8ff; padding:1%; width:10%; max-width: 120px; z-index:3;}
+.menu *{text-align: center; width:100%; color:#000; display: block;
+text-decoration: none; -webkit-text-stroke:#000 0.5px; -webkit-text-fill-color: #75c2af;}
 .menu .space-up{margin-top:40%}
 .menu .menu-item img{display:block; margin:auto}
-#menu-ini{background-color: #75c2af;}
+#menu-ini{padding:3%}
 /* the current section will be indicated by the menu*/
-.menu-item.current{border-right: 2px solid #fff; padding-left:2%}
+.menu-item.current{border-right: 2px solid #75c2af; padding-left:2%}
 
-#main-tab{width:90%; background-image:url("../img/bg.png"); background-size: cover;
-margin-left:10%; background-position:top}
-#main-tab *{color:#444; -webkit-text-stroke:#fff 1px;}
+#main-tab{width:90%; background-image:url("../img/p.png"); background-size: contain;
+margin-left:10%; background-position:top; background-position-y:bottom; height:auto}
+#main-tab *{color:#444;}
 
 #intro{padding:2%; min-height:100vh}
-#intro .icon{width:20%}
-#intro .name{font-size: 40px; font-weight: bold; padding:2%;}
-#intro .name .n{color:#75c2af}
-#intro .occupation{font-size:25px; font-weight:bold; text-align: left;}
-#intro .occupation div{color:#75c2af;}
-#intro .contact-me *{font-size:18px; font-weight: normal; -webkit-text-stroke: 0px;}
+#intro .greeting{border-bottom: 2px solid #75c2af;}
+#intro *{text-align: center; -webkit-text-fill-color: #e8e8ff; -webkit-text-stroke-width: 1px;
+font-weight: bold; line-height: 150%; transition: .5s;}
+#intro .icon{width:8%; width:10vw}
+#intro .name{font-size: 35px; padding:5%;}
+#intro .occupation{font-size:25px;}
+#intro .contact-me *{font-size:18px; -webkit-text-fill-color: initial; -webkit-text-stroke: 0px;
+font-weight: normal;}
 
 .content{width:50%; margin:auto}
 #skills{padding: 3%;}
@@ -66,14 +70,13 @@ margin-left:10%; background-position:top}
 
 /*small screens*/
 body.ss #main-tab{width:100%; margin-left: 0%;}
-body.ss #intro .name{font-size:30px}
+body.ss #intro .name{font-size:25px}
+body.ss #intro .occupation .space-up{margin-top:5%}
+body.ss #intro .contact-me{margin-top:5%}
 body.ss #menu-ini{display:flex}
 body.ss .menu{width:100%; max-width:200px;}
 body.ss .hide{display:none}
 body.ss .menu .space-up{margin-top:20%}
-body.ss .toggle-container input[type=checkbox]:checked + span.round{
-    background-color:#f00;
-}
 body.ss .content{width:100%; padding:5%}
 body.ss #skills-list .skill{width:45%}
 body.ss #project-list .project{width:45%}
@@ -81,13 +84,20 @@ body.ss #project-list .project{width:45%}
 /*dark theme*/
 #dark-theme *{color:#fff}
 #dark-theme body{background-color: #000;}
-#dark-theme .menu{background-color:#000; border-right:2px solid #f00}
-#dark-theme .menu-item.current{border-right:2px solid #75c2af}
+#dark-theme .menu{background-color:#000; border:none; background-image: none;}
 #dark-theme #skills-list .skill{box-shadow:inset 2px 10px 10px #555;}
 #dark-theme #project-list .project{box-shadow:inset 2px 10px 10px #888}
 #dark-theme .minitab{background-color: #000;}
+#dark-theme #main-wrapper{background-color: rgba(0,0,0,0.7);}
+#dark-theme #intro *{-webkit-text-fill-color: #444; -webkit-text-stroke: #c8c8ff 1px;}
+#dark-theme #intro .contact-me *{font-weight:normal; -webkit-text-fill-color: initial;
+-webkit-text-stroke: 0px;}
 
-
+/*scroll bars*/
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background-color: transparent}
+::-webkit-scrollbar-thumb{background-color: #75c2af; width:20px;}
+*{scrollbar-color:#75c2af transparent; scrollbar-width:thin}
 @keyframes from-left{
     0%{translate:-200px}
     100%{translate:0px}

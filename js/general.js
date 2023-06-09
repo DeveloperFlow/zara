@@ -2,15 +2,13 @@
 var bigScreen = 700
 var darkTheme = "dark-theme"
 var Html = document.getElementsByTagName("html")[0]
-var currentSection = 0
-var formalScroll = Html.scrollTop
 var contactMethod = {email:contactEmail,phone:contactPhone,wa:contactWa,uw:contactUw}
 
 //pages
 var IntroPage = document.getElementById("intro")
 var skillsPage = document.getElementById("skills")
 var projectsPage = document.getElementById("projects")
-var footer = document.getElementsByTagName("footer")[0]
+var footer = document.getElementById("footer")
 var sections = [IntroPage,skillsPage,projectsPage]
 
 window.onload = function(){
@@ -24,12 +22,13 @@ window.onload = function(){
         changeClass(document.body,"not-loaded","")
         loadTheme()
         adjust()
+        loadIntro()
         loadSkills()
         loadProjects()
         addEvent(window,"resize",adjust)
         addEvent(menuIniBtn,"click",openMenu)
         addEvent(themeIni,"click",toggleTheme)
-        addEvent(document,"scroll",updateSection)
+        updateSection()
         scrollNShow()
         for(var i = 0; i < menu.children[0].children.length; i++){
             addMenuEvent(menu.children[0].children[i])
@@ -38,7 +37,7 @@ window.onload = function(){
             var contactInter = contactList.children[c]
             contactInter.onclick = contactMethod[contactInter.name]
             var clone = contactInter.cloneNode(true)
-            clone.id = ""; clone.onclick = contactInter.onclick
+            clone.id = ""; clone.onclick = contactInter.onclick;
             footer.appendChild(clone) 
         }
         function addMenuEvent(current){
@@ -210,7 +209,7 @@ function contactPhone(){
     copy(phoneNo,function(){customAlert("Phone Number Copied")})
 }
 function contactUw(){
-    var profileLink = "https://www.upwork.com/freelancers/~018563bf28c5aafcda"
+    var profileLink = "https://www.upwork.com/freelancers/~012c4e9f7c5bc428d3"
     window.open(profileLink,"_blank")
 }
 function contactWa(){
@@ -223,31 +222,49 @@ function moveToSection(e,target){
     href = reverse(href)
     href = reverse(href.slice(0,href.indexOf("/") - 1))
     target = document.getElementById(href)
-    var top = target.getBoundingClientRect().top + window.scrollY
-    try{scroll({top:top,behavior:"smooth"})}
-    catch(err){scroll(0,top)}
+    var docPos = getDocScroll()
+    var top = Math.ceil(target.getBoundingClientRect().top + docPos)
+    scroll(0,top)
 }
 function updateSection(e){
-    var coord = sections[currentSection].getBoundingClientRect()
-    var pos = window.scrollY
-    var winH = windowDim("h")
-    function changeSection(){
-        changeClass(menu.children[0].children[currentSection],"current","")
-        changeClass(menu.children[0].children[newSection],"","current")
-        currentSection = newSection
-    }
-    if(formalScroll > pos){
-        /*scrolling up*/
-        var newSection = currentSection - 1
-        if(coord.top > 10 && newSection in sections){
-            changeSection()
+    var indicators = menu.children[0].children
+    var current = 0
+    var lastScroll
+    findSection()
+    function findSection(){
+        for(var i = 0; i < indicators.length; i++){
+            var thisIndicator = indicators[i]; var thisSection = sections[i]
+            var coord = thisSection.getBoundingClientRect()
+            if(coord.top <= 0 && coord.bottom > 0){
+                if(current in indicators){changeClass(indicators[current],"current","")}
+                current = i
+                changeClass(indicators[current],"","current")
+                break
+            }
         }
+        lastScroll = getDocScroll()
     }
-    else{
-        var newSection = currentSection + 1
-        if(coord.bottom < 1 && newSection in sections){
-            changeSection()
+    function update(){
+        //get variables
+        var coord = sections[current].getBoundingClientRect()
+        var indicator = indicators[current]
+        var pos = getDocScroll()
+        var downScroll; var upScroll
+        //if the scroll is downward
+        if(lastScroll < pos){downScroll = true}
+        else if(lastScroll > pos){upScroll = true}
+
+        if((downScroll && coord.bottom <= 0) || (upScroll && coord.top >= 0)){
+            findSection()
         }
+        else{lastScroll = pos;}
     }
-    formalScroll = pos
+    addEvent(document,"scroll",update)
+}
+function getDocScroll(){
+    var docPos
+    if(window.scrollY != undefined){docPos = window.scrollY}
+    else if(Html.scrollTop != 0 ){docPos = Html.scrollTop}
+    else{docPos = document.body.scrollTop}
+    return docPos
 }
