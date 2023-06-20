@@ -6,6 +6,18 @@ font-weight: bold;}
 /*more general styles*/
 .text-icon{font-size:40px; display:none}
 img{border:none}
+.resp-grid{max-width:900px; margin:auto}
+.resp-grid .item{width:270px; text-align: center; margin-top:5%; border:2px solid #75c2af; 
+    margin-left:30px; padding:2%; border-radius:25px; float:left; height:200px
+}
+@media only screen and (max-width:1040px){
+    .resp-grid{max-width:720px}
+    .resp-grid .item{width:210px;}
+}
+@media only screen and (max-width:820px){
+    .resp-grid{max-width:600px; padding:0% 5% 0% 0%}
+    .resp-grid .item{width:45%; margin-left:5%;}
+}
 
 /*menu*/
 .menu{background-color: #e8e8ff; padding:1%; width:10%; max-width: 120px; z-index:3;}
@@ -32,28 +44,20 @@ font-weight: bold; line-height: 150%; transition: .5s;}
 font-weight: normal;}
 
 .content{width:50%; margin:auto}
-#skills{padding: 3%;}
 #skills .intro{margin-top:3%}
 #skills *,#projects *{-webkit-text-stroke:0px}
-#skills-list{padding:0% 5% 4% 5%;}
 #skills-list img{width:40%; height:auto}
-#skills-list .skill{width:auto; max-width:250px; text-align: center; margin-top:5%; 
-    margin-left:5%; padding:5%; border-radius:25px; border:2px solid #75c2af;
-    float:left; height:200px}
 
-#projects{padding:3%}
-#project-list{padding: 0% 5% 4% 5%;}
 #project-list img{width:100%; height:auto; max-height:60%; object-fit: cover;}
 #project-list .project span{font-weight: normal;}
-#project-list .project{width:auto; max-width:250px; text-align: center; margin-top: 5%;
-    margin-left:5%; padding:5%; border-radius:25px; border:2px solid #75c2af; float:left;
-    height:200px;
-}
+
 .project-details .skills{border-radius: 25px; font-size:13px; background-color: #aaa;
     display:inline-block; margin-top:2%; margin-left:2%
 }
 .project-details .slider-container{margin-top:5%}
 .project-details .slider-container *{color:#000 !important}
+.project-details .slider-container img{background-color: #75c2af; 
+background-image: linear-gradient(#75c2af,#c8c8ff);}
 .project-details .header{border-bottom:2px solid #75c2af}
 .project-details .desc{background-color: rgba(100,100,100,0.5); padding:2%; border-radius: 8px;}
 
@@ -65,7 +69,7 @@ font-weight: normal;}
 .minitab .cancel-btn{border:0px}
 .minitab{background-image: url("../img/p.png"); background-size: cover; background-position: top;}
 .scroll-n-view.visible.from-left{animation-name:from-left; animation-duration: .5s;}
-.scroll-n-view{transition: .5s;}
+.scroll-n-view{transition: .4s;}
 .contact-methods{margin-top:3%}
 
 /*small screens*/
@@ -94,10 +98,13 @@ body.ss #project-list .project{width:45%}
 -webkit-text-stroke: 0px;}
 
 /*scroll bars*/
-::-webkit-scrollbar{width:10px;}
-::-webkit-scrollbar-track{background-color: transparent}
-::-webkit-scrollbar-thumb{background-color: #75c2af; width:20px;}
-*{scrollbar-color:#75c2af transparent; scrollbar-width:thin}
+@media only screen and (min-width:700px){
+    ::-webkit-scrollbar{width:10px;}
+    ::-webkit-scrollbar-track{background-color: transparent}
+    ::-webkit-scrollbar-thumb{background-color: #75c2af; width:20px;}
+    *{scrollbar-color:#75c2af transparent; scrollbar-width:thin}
+}
+
 @keyframes from-left{
     0%{translate:-200px}
     100%{translate:0px}

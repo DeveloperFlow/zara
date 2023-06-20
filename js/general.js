@@ -119,7 +119,7 @@ function loadSkills(){
     parent.className = "wrapper"
     for(var i=0; i < Skills.length; i++){
         var container = document.createElement("div")
-        container.className = "skill pointer zoom scroll-n-view"
+        container.className = "skill pointer zoom scroll-n-view item"
         var logo = document.createElement("img")
         var name = document.createElement("div")
         append(container,[logo,name])
@@ -134,7 +134,7 @@ function loadSkills(){
 function loadProjects(){
     for(var i = 0; i < Projects.length; i++){
         var container = document.createElement("div")
-        container.className = "project pointer zoom scroll-n-view from-left"
+        container.className = "project pointer zoom scroll-n-view from-left item"
         var logo = document.createElement("img")
         logo.src = "projects/images/" + Projects[i].images[0]
         var name = document.createElement("div"); 
